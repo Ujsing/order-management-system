@@ -1,0 +1,114 @@
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   CSS VARIABLES — DARK THEME (default)
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  --bg-primary:    #070711;
+  --bg-secondary:  #0d0d1a;
+  --bg-card:       #111120;
+  --bg-hover:      #161628;
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary:  #475569;
+  --text-muted:     #374151;
+
+  --border:         rgba(255, 255, 255, 0.07);
+  --border-strong:  rgba(255, 255, 255, 0.14);
+
+  --gradient-primary: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  --gradient-success: linear-gradient(135deg, #10b981, #059669);
+  --gradient-danger:  linear-gradient(135deg, #f43f5e, #dc2626);
+
+  --color-violet: #8b5cf6;
+  --color-blue:   #3b82f6;
+  --color-cyan:   #06b6d4;
+  --color-green:  #10b981;
+  --color-red:    #ef4444;
+  --color-amber:  #f59e0b;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   CSS VARIABLES — LIGHT THEME
+   ============================================================ */
+[data-theme="light"] {
+  --bg-primary:    #f1f5f9;
+  --bg-secondary:  #f8fafc;
+  --bg-card:       #ffffff;
+  --bg-hover:      #f8fafc;
+
+  --text-primary:   #0f172a;
+  --text-secondary: #4b5563;
+  --text-tertiary:  #9ca3af;
+  --text-muted:     #d1d5db;
+
+  --border:         rgba(0, 0, 0, 0.07);
+  --border-strong:  rgba(0, 0, 0, 0.14);
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   SCROLLBARS
+   ============================================================ */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(139,92,246,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139,92,246,0.5); }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: -0.01em; }
+p { line-height: 1.6; }
+a { color: #8b5cf6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ============================================================
+   UTILITY ANIMATIONS
+   ============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.fade-in  { animation: fadeIn 0.25s ease; }
+.skeleton { animation: pulse 1.5s ease infinite; background: rgba(255,255,255,0.06); border-radius: 6px; }
+
+/* ============================================================
+   SELECT / INPUT — override browser default dark background
+   ============================================================ */
+select option {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   TEXTAREA
+   ============================================================ */
+textarea {
+  line-height: 1.6;
+  color-scheme: dark;
+}
