@@ -1,13 +1,13 @@
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+// import { useTheme } from '../../context/ThemeContext';
 import { TEAM_MEMBERS } from '../../data/users';
 import { formatDate } from '../../utils/dateFormatter';
 
 export default function OrderHeader({ order }) {
   const navigate = useNavigate();
-  const { isDark } = useTheme();
+//   const { isDark } = useTheme();
 
   const assignee = TEAM_MEMBERS.find(m => m.value === order.assignedTo);
 

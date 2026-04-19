@@ -9,9 +9,9 @@ const variants = {
   },
   ghost: {
     background: 'transparent',
-    color: '',        // filled by theme
+    color: '',       
     border: '0.5px solid',
-    borderColor: '',  // filled by theme
+    borderColor: '', 
   },
   danger: {
     background: 'linear-gradient(135deg, #f43f5e, #dc2626)',

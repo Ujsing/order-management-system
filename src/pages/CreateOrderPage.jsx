@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateOrder from '../features/CreateOrder/CreateOrder';
+import CreateOrder from '../features/createOrder/CreateOrder';
 
 
 export default function CreateOrderPage() {

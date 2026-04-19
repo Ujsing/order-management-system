@@ -1,10 +1,4 @@
 import { useTheme } from '../../context/ThemeContext';
-
-/**
- * Used in Order Detail for key-value pairs:
- * <InfoRow label="Customer" value="Ravi Kumar" />
- * <InfoRow label="Total" value="₹1,23,000" highlight />
- */
 export default function InfoRow({ label, value, highlight = false }) {
   const { isDark } = useTheme();
 

@@ -44,8 +44,6 @@ function BarChart({ data }) {
 }
  
 function DonutChart({ segments, total }) {
-  // Build SVG stroke-dasharray for each segment around a circle of r=28
-  // Circumference = 2π × 28 ≈ 176
   const C = 176;
   let offset = 0;
   const paths = segments.map(seg => {
@@ -63,7 +61,6 @@ function DonutChart({ segments, total }) {
         strokeLinecap="round"
       />
     );
-    // offset += dash;
     return el;
   });
  

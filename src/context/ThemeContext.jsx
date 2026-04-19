@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { createContext, useState, useEffect } from 'react';
  
 const ThemeContext = createContext(null);
@@ -22,9 +23,9 @@ export function ThemeProvider({ children }) {
 }
  
 // Custom hook — import this wherever you need theme
-// export function useTheme() {
-//   const ctx = useContext(ThemeContext);
-//   if (!ctx) throw new Error('useTheme must be used inside <ThemeProvider>');
-//   return ctx;
-// }
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error('useTheme must be used inside <ThemeProvider>');
+  return ctx;
+}
  

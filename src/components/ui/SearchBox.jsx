@@ -1,9 +1,5 @@
 import { useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
-
-/**
- * <SearchBox placeholder="Search orders..." value={q} onChange={setQ} />
- */
 export default function SearchBox({
   placeholder = 'Search...',
   value = '',

@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Layout from './layout/Layout';
-
-// Pages
 import DashboardPage     from './pages/DashboardPage';
 import OrdersPage        from './pages/OrdersPage';
 import OrderDetailPage   from './pages/OrderDetailPage';

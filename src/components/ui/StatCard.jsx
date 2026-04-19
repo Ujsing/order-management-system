@@ -1,8 +1,3 @@
-/**
- * <StatCard label="Total Orders" value={248} color="violet" />
- * <StatCard label="Pending" value={42} color="blue" trend="+5%" trendUp />
- */
-
 const COLOR_MAP = {
   violet: {
     gradient: 'linear-gradient(135deg, #1a1040 0%, #0f172a 100%)',

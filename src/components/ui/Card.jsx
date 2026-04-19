@@ -1,15 +1,9 @@
 import { useTheme } from '../../context/ThemeContext';
-
-/**
- * <Card title="Customer Details">...</Card>
- * <Card noPad>...</Card>
- * <Card accent="violet">...</Card>   (adds left accent border)
- */
 export default function Card({
   title,
   children,
   noPad = false,
-  accent,       // 'violet' | 'blue' | 'green' | 'red' | 'amber'
+  accent,       
   style = {},
   className = '',
 }) {

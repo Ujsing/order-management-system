@@ -1,24 +1,13 @@
 import { useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import Button from './Button';
-
-/**
- * <Modal
- *   isOpen={showModal}
- *   onClose={() => setShowModal(false)}
- *   title="Confirm Delete"
- *   footer={<Button variant="danger" onClick={handleDelete}>Delete</Button>}
- * >
- *   <p>Are you sure?</p>
- * </Modal>
- */
 export default function Modal({
   isOpen,
   onClose,
   title,
   children,
   footer,
-  size = 'md',   // 'sm' | 'md' | 'lg'
+  size = 'md',
 }) {
   const { isDark } = useTheme();
 

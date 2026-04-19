@@ -1,5 +1,5 @@
 import React from 'react'
-import Notifications from '../features/Notifications/Notifications'
+import Notifications from '../features/notifications/Notifications'
 
 export default function NotificationsPage() {
   return <Notifications/>

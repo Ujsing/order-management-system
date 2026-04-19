@@ -1,10 +1,5 @@
 import { useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
-
-/**
- * <Input label="Email" type="email" value={email} onChange={setEmail} error={errors.email} />
- * <Input placeholder="Search..." value={q} onChange={setQ} />
- */
 export default function Input({
   label,
   type = 'text',

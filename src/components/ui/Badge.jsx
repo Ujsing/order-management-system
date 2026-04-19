@@ -13,12 +13,6 @@ const PRIORITY_CONFIG = {
   low:    { bg: 'rgba(16,185,129,0.15)', color: '#34d399', border: 'rgba(16,185,129,0.35)', label: 'LOW' },
 };
 
-/**
- * <Badge status="pending" />
- * <Badge status="in-progress" showDot />
- * <Badge priority="high" />
- * <Badge priority="medium" showDot />
- */
 export default function Badge({ status, priority, showDot = false, style = {} }) {
   const config = status ? STATUS_CONFIG[status] : PRIORITY_CONFIG[priority];
 

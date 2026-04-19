@@ -1,9 +1,3 @@
-// ============================================================
-//  ORDER MANAGEMENT SYSTEM — CENTRAL DESIGN TOKENS
-//  All colors, gradients, shadows, typography used here.
-//  Import from any component:  import { colors, gradients } from '@/colors'
-// ============================================================
-
 export const colors = {
   // ── Backgrounds ──────────────────────────────────────────
   bg: {
