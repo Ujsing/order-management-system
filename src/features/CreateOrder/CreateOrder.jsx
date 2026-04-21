@@ -35,11 +35,11 @@ export default function CreateOrder() {
 
   const goBack = () => setStep(s => s - 1);
 
-  const generateOrderId = () => {
-  const timestamp = Date.now();
-  const random = Math.floor(Math.random() * 1000);
-  return `#ORD-${timestamp}-${random}`;
+ const generateOrderId = () => {
+  const random = Math.floor(Math.random() * 900) + 100; // 100-999
+  return `#ORD-${random}`;
 };
+
 
   const handleSubmit = () => {
     const newOrder ={

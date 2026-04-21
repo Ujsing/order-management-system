@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import OrderToolbar from './OrderToolbar';
 import OrderCard from './OrderCard';
 import { mockOrders } from '../../data/mockOrders';
@@ -21,6 +21,32 @@ export default function OrdersList() {
   const [orders, setOrders]   = useState(mockOrders);
   const [search, setSearch]   = useState('');
   const [filters, setFilters] = useState({ status: '', priority: '', date: 'all' });
+
+  const loadOrders = () => {
+    const storedOrders = localStorage.getItem('orders');
+    let allOrders = [];
+    
+    if (storedOrders) {
+      const parsedStoredOrders = JSON.parse(storedOrders);
+      // Combine mock orders with stored orders
+      allOrders = [...mockOrders, ...parsedStoredOrders];
+    } else {
+      // If no stored orders, just use mock orders
+      allOrders = [...mockOrders];
+    }
+    
+    const uniqueOrders = Array.from(new Map(allOrders.map(order => [order.id, order])).values());
+    
+    // Sort orders by date (newest first)
+    uniqueOrders.sort((a, b) => new Date(b.createdAt || b.date) - new Date(a.createdAt || a.date));
+    
+    setOrders(uniqueOrders);
+  };
+
+    useEffect(() => {
+    loadOrders();
+  }, []);
+
 
   const filtered = orders.filter(order => {
     const q = search.toLowerCase();
