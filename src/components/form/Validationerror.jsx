@@ -1,6 +1,3 @@
-/**
- * <ValidationError message={errors.email} />
- */
 export default function ValidationError({ message }) {
   if (!message) return null;
   return (

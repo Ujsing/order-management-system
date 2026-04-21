@@ -14,7 +14,7 @@ html, body, #root {
 }
 
 /* ============================================================
-   CSS VARIABLES — DARK THEME (default)
+   CSS VARIABLES — DARK THEME
    ============================================================ */
 :root,
 [data-theme="dark"] {
@@ -22,26 +22,22 @@ html, body, #root {
   --bg-secondary:  #0d0d1a;
   --bg-card:       #111120;
   --bg-hover:      #161628;
-
   --text-primary:   #f1f5f9;
   --text-secondary: #94a3b8;
   --text-tertiary:  #475569;
   --text-muted:     #374151;
-
   --border:         rgba(255, 255, 255, 0.07);
   --border-strong:  rgba(255, 255, 255, 0.14);
-
   --gradient-primary: linear-gradient(135deg, #8b5cf6, #3b82f6);
   --gradient-success: linear-gradient(135deg, #10b981, #059669);
   --gradient-danger:  linear-gradient(135deg, #f43f5e, #dc2626);
-
   --color-violet: #8b5cf6;
   --color-blue:   #3b82f6;
   --color-cyan:   #06b6d4;
   --color-green:  #10b981;
   --color-red:    #ef4444;
   --color-amber:  #f59e0b;
-
+  --bottom-nav-height: 60px;
   color-scheme: dark;
 }
 
@@ -53,15 +49,12 @@ html, body, #root {
   --bg-secondary:  #f8fafc;
   --bg-card:       #ffffff;
   --bg-hover:      #f8fafc;
-
   --text-primary:   #0f172a;
   --text-secondary: #4b5563;
   --text-tertiary:  #9ca3af;
   --text-muted:     #d1d5db;
-
   --border:         rgba(0, 0, 0, 0.07);
   --border-strong:  rgba(0, 0, 0, 0.14);
-
   color-scheme: light;
 }
 
@@ -82,33 +75,243 @@ a { color: #8b5cf6; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ============================================================
-   UTILITY ANIMATIONS
+   ANIMATIONS
    ============================================================ */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.5; }
-}
+@keyframes fadeIn  { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+@keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulse   { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
 
 .fade-in  { animation: fadeIn 0.25s ease; }
+.slide-up { animation: slideUp 0.3s ease; }
 .skeleton { animation: pulse 1.5s ease infinite; background: rgba(255,255,255,0.06); border-radius: 6px; }
 
 /* ============================================================
-   SELECT / INPUT — override browser default dark background
+   FORM ELEMENTS
    ============================================================ */
-select option {
-  background: var(--bg-card);
-  color: var(--text-primary);
+select option { background: var(--bg-card); color: var(--text-primary); }
+textarea { line-height: 1.6; color-scheme: dark; }
+
+/* ============================================================
+   RESPONSIVE GRID CLASSES
+   (Used in JSX as className="stats-grid" etc.)
+   ============================================================ */
+
+/* Dashboard stat cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* Dashboard charts row */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* Order Detail 2-col layout */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 10px;
+}
+
+/* Form 2-col row */
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* Step 3 review 2-col */
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Orders toolbar */
+.toolbar-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
 }
 
 /* ============================================================
-   TEXTAREA
+   LAYOUT SHELL
    ============================================================ */
-textarea {
-  line-height: 1.6;
-  color-scheme: dark;
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
+
+.app-shell__sidebar { display: flex; }
+
+.app-shell__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.app-shell__main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Bottom nav — desktop hidden */
+.bottom-nav { display: none; }
+
+/* ============================================================
+   TOPBAR RESPONSIVE
+   ============================================================ */
+.topbar-search { display: flex; }
+
+/* ============================================================
+   ORDER CARD RESPONSIVE HELPERS
+   ============================================================ */
+.order-card__date   { display: block; }
+.order-card__priority { display: inline-flex; }
+
+/* ============================================================
+   TABLET  640px – 1024px
+   ============================================================ */
+@media (max-width: 1024px) {
+  /* 3-col stat cards */
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Charts stack vertically */
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Detail stacks */
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Review stacks */
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-shell__main {
+    padding: 16px;
+  }
+}
+
+/* ============================================================
+   MOBILE  < 640px
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Hide sidebar */
+  .app-shell__sidebar {
+    display: none;
+  }
+
+  /* Show bottom nav */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--bottom-nav-height);
+    background: var(--bg-secondary);
+    border-top: 0.5px solid var(--border);
+    align-items: center;
+    justify-content: space-around;
+    z-index: 100;
+    padding: 0 4px;
+  }
+
+  .bottom-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.18s;
+    flex: 1;
+    max-width: 72px;
+  }
+
+  .bottom-nav__item.active  { color: #a78bfa; }
+  .bottom-nav__item.inactive { color: #374151; }
+
+  .bottom-nav__label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* Add bottom padding so content isn't behind nav */
+  .app-shell__main {
+    padding: 14px 12px;
+    padding-bottom: calc(var(--bottom-nav-height) + 14px);
+  }
+
+  /* Topbar: hide search pill */
+  .topbar-search {
+    display: none;
+  }
+
+  /* Stats: 2 cols */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  /* All grids → 1 col */
+  .chart-row,
+  .detail-grid,
+  .form-row-2,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Toolbar stacks vertically */
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-row > * {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  /* Order card hides date on mobile */
+  .order-card__date { display: none; }
+}
+
+/* ============================================================
+   VERY SMALL  < 400px
+   ============================================================ */
+@media (max-width: 400px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .app-shell__main {
+    padding: 10px 8px;
+    padding-bottom: calc(var(--bottom-nav-height) + 10px);
+  }
+}
+

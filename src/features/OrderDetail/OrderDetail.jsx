@@ -6,13 +6,14 @@ import OrderItemsSection from './OrderItemsSection';
 import ActivityTimeline from './ActivityTimeline';
 import NotesSection from './NotesSection';
 import { mockOrders } from '../../data/mockOrders';
-// import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 function NotFound() {
+  const { isDark } = useTheme();
   return (
     <div style={{ textAlign:'center', padding:'60px 0' }}>
       <div style={{ fontSize:'40px', marginBottom:'12px' }}>🔍</div>
-      <p style={{ fontSize:'14px', fontWeight:'600', color:'#e2e8f0', margin:'0 0 4px' }}>Order not found</p>
+      <p style={{ fontSize:'14px', fontWeight:'600', color: isDark ? '#e2e8f0' : '#1e293b', margin:'0 0 4px' }}>Order not found</p>
       <p style={{ fontSize:'12px', color:'#475569', margin:0 }}>The order ID you are looking for does not exist.</p>
     </div>
   );
@@ -29,7 +30,9 @@ export default function OrderDetail() {
     <div>
       <OrderHeader order={order} />
       <StatusTracker order={order} />
-      <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gap:'10px' }}>
+
+      {/* className="detail-grid" → 2 cols desktop → 1 col mobile */}
+      <div className="detail-grid">
         <div>
           <CustomerInfoSection order={order} />
           <OrderItemsSection order={order} />
@@ -42,12 +45,3 @@ export default function OrderDetail() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-

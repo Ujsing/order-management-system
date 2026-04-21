@@ -1,10 +1,5 @@
 import { useTheme } from '../../context/ThemeContext';
 
-/**
- * <FormGroup label="Full Name" error={errors.name} required>
- *   <Input value={name} onChange={setName} />
- * </FormGroup>
- */
 export default function FormGroup({ label, error, required, children, style = {} }) {
   const { isDark } = useTheme();
   const labelColor = isDark ? '#94a3b8' : '#64748b';

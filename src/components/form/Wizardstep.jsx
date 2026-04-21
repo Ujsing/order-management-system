@@ -1,10 +1,3 @@
-/**
- * <div style={{ display:'flex', gap:'4px', marginBottom:'16px' }}>
- *   <WizardStep stepNum={1} label="Customer Info" isActive={step===1} isCompleted={step>1} />
- *   <WizardStep stepNum={2} label="Order Items"   isActive={step===2} isCompleted={step>2} />
- *   <WizardStep stepNum={3} label="Review"        isActive={step===3} isCompleted={false} />
- * </div>
- */
 export default function WizardStep({ stepNum, label, isActive, isCompleted, isLast = false }) {
   const circleStyle = {
     width: '22px',

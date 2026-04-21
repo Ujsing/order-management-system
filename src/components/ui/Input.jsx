@@ -44,7 +44,7 @@ export default function Input({
           {label}
           {required && <span style={{ color: '#f87171', marginLeft: '3px' }}>*</span>}
         </label>
-      )}
+      )}  
 
       <input
         type={type}

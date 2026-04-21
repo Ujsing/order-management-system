@@ -35,12 +35,41 @@ export default function CreateOrder() {
 
   const goBack = () => setStep(s => s - 1);
 
+  const generateOrderId = () => {
+  const timestamp = Date.now();
+  const random = Math.floor(Math.random() * 1000);
+  return `#ORD-${timestamp}-${random}`;
+};
+
   const handleSubmit = () => {
-    alert(`✅ Order created for ${formData.customerName}!\n(In production this would be saved to the backend.)`);
+    const newOrder ={
+      id: generateOrderId(),
+      customerName: formData.customerName,
+      customerEmail: formData.email,
+      customerPhone: formData.phone,
+      priority: formData.priority,
+      assignedTo: formData.assignedTo,
+      date: formData.date || new Date().toISOString().split('T')[0],
+      items: formData.items,
+      notes: formData.notes,
+      status: 'pending', // Default status for new orders
+      createdAt: new Date().toISOString(),
+    };
+      const existingOrders = localStorage.getItem('orders');
+    let allUserOrders = existingOrders ? JSON.parse(existingOrders) : [];
+    
+    // Add new order
+    allUserOrders = [newOrder, ...allUserOrders];
+    
+    // Save back to localStorage
+    localStorage.setItem('orders', JSON.stringify(allUserOrders));
+
+    alert(`✅ Order ${newOrder.id} created for ${formData.customerName}!`);
     setFormData(EMPTY_FORM);
     setStep(1);
     navigate('/orders');
   };
+  
 
   return (
     <div>

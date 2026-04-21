@@ -18,7 +18,6 @@ export default function Select({
   const border     = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.12)';
   const borderErr  = 'rgba(239,68,68,0.6)';
 
-  const chevronColor = isDark ? '%2394a3b8' : '%236b7280';
 
   return (
     <div style={{ width: '100%', ...style }}>
@@ -55,7 +54,6 @@ export default function Select({
           cursor: disabled ? 'not-allowed' : 'pointer',
           appearance: 'none',
           WebkitAppearance: 'none',
-          backgroundImage: chevronColor,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right 10px center',
           transition: 'border-color 0.2s',
