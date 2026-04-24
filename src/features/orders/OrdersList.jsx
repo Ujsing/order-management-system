@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import OrderToolbar from './OrderToolbar';
 import OrderCard from './OrderCard';
 import { mockOrders } from '../../data/mockOrders';
+import { useDebounce } from '../../hooks/usedebounce';
 
 function EmptyState() {
   return (
@@ -20,6 +21,7 @@ function EmptyState() {
 export default function OrdersList() {
   const [orders, setOrders]   = useState(mockOrders);
   const [search, setSearch]   = useState('');
+  const  debounceSearch = useDebounce(search, 500)
   const [filters, setFilters] = useState({ status: '', priority: '', date: 'all' });
 
   const loadOrders = () => {
@@ -49,6 +51,7 @@ export default function OrdersList() {
 
 
   const filtered = orders.filter(order => {
+    // remove search and add debounceSearch custopm hook
     const q = search.toLowerCase();
     const matchSearch =
       !q ||
@@ -60,7 +63,12 @@ export default function OrdersList() {
     return matchSearch && matchStatus && matchPriority;
   });
 
-  const handleDelete = id => setOrders(prev => prev.filter(o => o.id !== id));
+  const handleDelete = id => {const updated = setOrders(prev => prev.filter(o => o.id !== id))
+                              localStorage.setItem('order', JSON.stringify(updated))
+                              return updated
+
+  };
+
 
   return (
     <div className="w-full min-w-0">

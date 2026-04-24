@@ -23,10 +23,10 @@ export default function Step1CustomerInfo({ formData, setFormData, errors }) {
       {/* className="form-row-2" → 2 cols desktop → 1 col mobile */}
       <div className="form-row-2">
         <FormGroup label="Full name" required error={errors.customerName}>
-          <Input placeholder="e.g. Ravi Kumar" value={formData.customerName} onChange={set('customerName')}  />
+          <Input placeholder=" enter your name" value={formData.customerName} onChange={set('customerName')}  />
         </FormGroup>
         <FormGroup label="Email address" required error={errors.email}>
-          <Input type="email" placeholder="ravi@example.com" value={formData.email} onChange={set('email')}  />
+          <Input type="email" placeholder=" enter your email id" value={formData.email} onChange={set('email')}  />
         </FormGroup>
       </div>
 
@@ -46,6 +46,15 @@ export default function Step1CustomerInfo({ formData, setFormData, errors }) {
         </FormGroup>
         <FormGroup label="Assigned to">
           <Select options={TEAM_OPTIONS} value={formData.assignedTo} onChange={set('assignedTo')} placeholder="Select team member" />
+        </FormGroup>
+      </div>
+
+      <div className="form-row-2">
+        <FormGroup label="Address" required error={errors.date}>
+          <Input type="text" value={formData.Address} onChange={set('Address')} />
+        </FormGroup>
+        <FormGroup label="Address2">
+          <Input type="text" value={formData.Address2} onChange={set('Address2')} />
         </FormGroup>
       </div>
 
